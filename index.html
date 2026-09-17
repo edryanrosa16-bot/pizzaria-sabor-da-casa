@@ -259,6 +259,35 @@
   }
 
 }
+    .foto-ampliada {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.foto-ampliada img {
+  max-width: 90%;
+  max-height: 85%;
+  border-radius: 15px;
+}
+
+.fechar {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+  font-weight: bold;
+}
+    
   </style>
 
 </head>
@@ -325,9 +354,10 @@
 
   <div class="fotos">
 
-<a href="https://images.unsplash.com/photo-1513104890138-7c749659a591" target="_blank">
-  <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=80" alt="Pizza">
-</a>
+<img
+  src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=80"
+  alt="Pizza"
+  onclick="abrirFoto(this.src)">
 
   <a href="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=1600&q=90" target="_blank">
     <img src="https://images.unsplash.com/photo-1579751626657-72bc17010498?auto=format&fit=crop&w=900&q=80" alt="Pizza sendo preparada">
@@ -466,7 +496,30 @@
     </footer>
 
   </div>
+  
+<!-- FOTO AMPLIADA -->
 
+<div class="foto-ampliada" id="fotoAmpliada">
+
+  <span class="fechar" onclick="fecharFoto()">✕</span>
+
+  <img id="imagemGrande" src="" alt="Foto ampliada">
+
+</div>
+  
+  <script>
+
+function abrirFoto(imagem) {
+  document.getElementById("imagemGrande").src = imagem;
+  document.getElementById("fotoAmpliada").style.display = "flex";
+}
+
+function fecharFoto() {
+  document.getElementById("fotoAmpliada").style.display = "none";
+}
+
+</script>
+  
 </body>
 
 </html>
